@@ -1,0 +1,284 @@
+:root {
+  --primaryTextColor: #232e35; /* Untuk title atau judul */
+  --secondaryTextColor: #656d72; /* Untuk text biasa seperti paragraph contohnya */
+
+  --borderColor: #f1f1f1;
+  --lineColor: #d9d9d9; /* untuk line di pre-title */
+
+  --primaryBackgroundColor: #fff;
+  --secondaryBackgroundColor: #fbfbfb;
+  --thirdBackgroundColor: #f5f3fe;
+
+  --primaryIconColor: #7e74f1;
+  --primaryIconColorHover: #5d51e8;
+
+  --sectionPadding: 6rem 0;
+
+  --itemBorderRadius: 0.7rem;
+}
+
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  padding-top: 50px; /* Menyesuaikan padding untuk mencegah tumpang tindih dengan header */
+  overflow-x: hidden; /* Mencegah scroll horizontal */
+}
+
+.container {
+  max-width: 2000px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  display: flex; /* Membuat header dan menu navigasi sejajar */
+  justify-content: space-between; /* Mengatur jarak antara header dan menu navigasi */
+  align-items: center; /* Memastikan header dan menu navigasi berada pada tengah vertikal */
+}
+
+header {
+  background-color: #ffffff;
+  line-break: auto;
+  color: #000000;
+  padding: 10px 20px;
+  position: fixed; /* Mengatur posisi absolut untuk header */
+  top: 0; /* Mengatur header di paling atas */
+  left: 0;
+  right: 0;
+  z-index: 999; /* Memastikan header tampil di atas konten lain */
+  transition: height 0.3s ease; /* Animasi transisi untuk perubahan tinggi header */
+}
+
+header h1 {
+  margin: 0;
+}
+
+.nav-menu {
+  /* Tambahkan display: block; untuk menampilkan menu di mode desktop */
+  display: block;
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-menu ul li {
+  display: inline-block;
+  padding: 10px 20px;
+}
+
+.nav-menu ul li a {
+  color: #000000;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+  position: absolute; /* Mengatur posisi absolut untuk hamburger menu */
+  top: 10px; /* Atur posisi hamburger menu sesuai kebutuhan */
+  right: 0px; /* Atur posisi hamburger menu sesuai kebutuhan */
+}
+
+.nav-hamburger .line {
+  width: 100%;
+  height: 3px;
+  background-color: #000000;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 767px) {
+  .nav-menu {
+      /* Sembunyikan menu pada mode layar kecil */
+      display: none;
+      position: relative; /* Kembalikan posisi menu navigasi ke relatif */
+  }
+
+  .nav-menu.open {
+      /* Tampilkan menu saat hamburger diklik */
+      display: block;
+      top: 40px; /* Atur posisi top agar tidak tumpang tindih dengan header */
+  }
+
+  .nav-menu.open ul li {
+      /* Mengatur tampilan menu dalam bentuk list di mode layar kecil */
+      display: block;
+  }
+
+  .nav-hamburger {
+      /* Tampilkan hamburger menu di mode layar kecil */
+      display: flex;
+  }
+}
+
+
+
+/* Style Section */
+.content {
+  width: 100vw; /* Mengisi seluruh lebar layar */
+  height: 100vh; /* Mengisi seluruh tinggi layar */
+  padding: 20px; /* Menambahkan padding untuk konten */
+}
+
+/* Hero Section */
+#hero {
+  height: 720px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* We're not going to use automatic template columns, because we need to know when the columns is go below. So we can exchange the order of the element */
+  align-items: center;
+}
+
+.hero-name {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0.5rem 0 1rem;
+}
+
+.hero-name span {
+  color: #51b67f;
+}
+
+.hero-right img {
+  width: 90%;
+}
+
+.hero-right {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+/* Sejarah */
+.sejarah1 {
+  max-width: 2000px;
+  margin: 0 0;
+  padding: 10px 20px;
+  position: relative;
+  display: flex; /* Membuat header dan menu navigasi sejajar */
+  justify-content: space-between; /* Mengatur jarak antara header dan menu navigasi */
+  align-items: center; /* Memastikan header dan menu navigasi berada pada tengah vertikal */
+}
+
+.sejarah1 img{
+  max-width: 50%;
+  max-height: 50%;
+}
+
+.s1{
+  position: relative;
+  height: 10vh; /* Sesuaikan dengan tinggi yang diinginkan */
+}
+
+.s1 h1{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Contact Section */
+#contact {
+  padding: var(--sectionPadding);
+}
+
+.contact {
+  display: grid;
+  /* grid-template-columns: 1fr 1fr; */
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 3rem;
+}
+
+.contact-form div {
+  margin-bottom: 1.4rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem 1.3rem;
+  font-family: "Roboto", sans-serif;
+  background: var(--secondaryBackgroundColor);
+  border: 1px solid var(--borderColor);
+  border-radius: 3px;
+  resize: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #9d9fa1;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border: 1px solid #7d7d7d;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 0.75rem 1.3rem;
+  background-color: var(--primaryIconColor);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.btn-submit:hover {
+  background-color: var(--primaryIconColorHover);
+}
+
+/* Contact Section - Right Side */
+.contact-item {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.contact-item-icon {
+  background: var(--thirdBackgroundColor);
+  /* padding: 0.8rem 1rem; */
+  width: 53px;
+  height: 53px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-item-icon svg {
+  fill: var(--primaryIconColor);
+}
+
+.contact-item-detail h4 {
+  margin-bottom: 0.6rem;
+}
+
+
+
+footer {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px 20px;
+  text-align: center;
+  position: fixed; /* Tetapkan posisi tetap di bagian bawah */
+  left: 0;
+  right: 0;
+  bottom: 0; /* Mengatur footer di paling bawah */
+}
